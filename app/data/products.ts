@@ -21,7 +21,7 @@ export const products: Product[] = [
     id: 1,
     name: "Tre-en-en® – 120 capsules",
     category: "Nutrition",
-    image: "/products/Tre-en-en.webp",
+    image: "/products/tre-en-en.jpeg",
     shortDescription: "Tre-en-en® nutrition product — 120 capsules.",
     about:
       "Tre-en-en® is a nutrition product in the VitaAura collection. This listing is for the 120-capsule size.",
@@ -69,7 +69,7 @@ export const products: Product[] = [
     id: 3,
     name: "Vegan D – 90 tablets",
     category: "Nutrition",
-    image: "/products/vegan-d.webp",
+    image: "/products/vegan-d.jpeg",
     shortDescription: "Vegan D — 90 tablets.",
     about: "Vegan D is a nutrition product in the VitaAura collection.",
     features: ["90 tablets", "Nutrition product", "VitaAura collection"],
@@ -113,9 +113,9 @@ export const products: Product[] = [
 
   {
     id: 5,
-    name: "Formula IV Plus",
+    name: "Formula IV Plus – 30 sachets",
     category: "Nutrition",
-    image: "/products/Formula IV Plus.webp",
+    image: "/products/formula-iv-plus-30-sachets.jpeg",
     shortDescription: "Formula IV Plus nutritional product — 30 sachets.",
     about:
       "Formula IV Plus is a nutrition product in the VitaAura collection. This listing is for the 30-sachet size.",
@@ -162,7 +162,7 @@ export const products: Product[] = [
     id: 7,
     name: "Fibre Tablets",
     category: "Nutrition",
-    image: "/products/Fibre Tablets.webp",
+    image: "/products/fibre-tablets.jpeg",
     shortDescription: "Fibre Tablets from the VitaAura collection.",
     about: "Fibre Tablets are a nutrition product in the VitaAura collection.",
     features: [
@@ -430,7 +430,7 @@ export const products: Product[] = [
     id: 17,
     name: "Chelated Zinc",
     category: "Nutrition",
-    image: "/products/Chelated Zinc.jpg",
+    image: "/products/zinc.jpeg",
     shortDescription: "Chelated Zinc — 150 tablets.",
     about:
       "Chelated Zinc provides zinc in glycinate and methionine chelate forms.",
@@ -482,7 +482,7 @@ export const products: Product[] = [
     id: 19,
     name: "Carotenoid Complex",
     category: "Nutrition",
-    image: "/products/Carotenoid Complex.jpg",
+    image: "/products/carotenoid-complex.jpeg",
     shortDescription: "Carotenoid Complex whole-food phytonutrient formula.",
     about:
       "Carotenoid Complex combines carotenoid, flavonoid and cruciferous nutrition components.",
@@ -500,7 +500,7 @@ export const products: Product[] = [
     pv: "",
     bv: "",
     price: null,
-    visible: false,
+    visible: true,
   },
 
   {
@@ -537,7 +537,7 @@ export const products: Product[] = [
     id: 21,
     name: "CoQ10 Mitochondrial Energy Complex",
     category: "Nutrition",
-    image: "/products/CoQ10 Mitochondrial Energy Complex.jpg",
+    image: "/products/coq10.jpeg",
     shortDescription:
       "CoQ10 Mitochondrial Energy Complex — 60 softgels.",
     about:
@@ -761,5 +761,56 @@ export const products: Product[] = [
     bv: "",
     price: null,
     visible: false,
+  },
+
+  {
+    id: 29,
+    name: "Vitamin C",
+    category: "Nutrition",
+    image: "/products/vitamin-c.jpeg",
+    shortDescription: "Vitamin C nutrition product from the VitaAura collection.",
+    about:
+      "Vitamin C is a nutrition product in the VitaAura collection. Product details, size and pricing will be confirmed before this listing is fully completed.",
+    features: [
+      "Vitamin C",
+      "Nutrition product",
+      "VitaAura collection",
+    ],
+    ingredients:
+      "Product composition will be added from confirmed official product information.",
+    usage:
+      "Usage instructions will be added from confirmed official product information.",
+    details: "Product size, SKU, PV, BV and price to be confirmed.",
+    sku: "",
+    pv: "",
+    bv: "",
+    price: null,
+    visible: true,
+  },
+
+  {
+    id: 30,
+    name: "Botanical Healthy Balance",
+    category: "Wellness",
+    image: "/products/botanical-healthy-balance.jpeg",
+    shortDescription:
+      "Botanical Healthy Balance from the VitaAura collection.",
+    about:
+      "Botanical Healthy Balance is a product in the VitaAura collection. Product details will be completed after the official product information is confirmed.",
+    features: [
+      "Botanical product",
+      "Wellness product",
+      "VitaAura collection",
+    ],
+    ingredients:
+      "Product composition will be added from confirmed official product information.",
+    usage:
+      "Usage instructions will be added from confirmed official product information.",
+    details: "Product size, SKU, PV, BV and price to be confirmed.",
+    sku: "",
+    pv: "",
+    bv: "",
+    price: null,
+    visible: true,
   },
 ];

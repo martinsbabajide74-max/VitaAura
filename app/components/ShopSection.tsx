@@ -7,52 +7,67 @@ import { products } from "../data/products";
 export default function ShopSection() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.trim().toLowerCase())
-  );
+  const filteredProducts = products
+    .filter((product) =>
+      product.name.toLowerCase().includes(searchTerm.trim().toLowerCase())
+    )
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <section
       id="shop"
-      className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14"
+      className="mx-auto max-w-7xl scroll-mt-32 px-4 py-14 sm:px-6 sm:py-20"
     >
-      {/* Shop Header */}
-      <div className="mb-6 rounded-2xl bg-white p-5 shadow-sm sm:p-6">
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
-              VitaAura Store
-            </p>
-
-            <div className="mt-2 flex flex-wrap items-center gap-3">
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl">
-                Featured Products
-              </h2>
-
-              <span className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-semibold text-zinc-500">
-                {filteredProducts.length}{" "}
-                {filteredProducts.length === 1 ? "product" : "products"}
+      {/* Section Header */}
+      <div className="mb-8">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-1.5 shadow-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-zinc-500">
+                VitaAura Store
               </span>
             </div>
 
-            <p className="mt-2 max-w-2xl text-sm leading-6 text-zinc-500">
-              Explore nutrition and wellness products available from
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-zinc-950 sm:text-4xl">
+              Explore our collection
+            </h2>
+
+            <p className="mt-3 text-sm leading-7 text-zinc-500 sm:text-base">
+              Discover nutrition and wellness products available through
               VitaAura.
             </p>
           </div>
 
-          {/* Product Search */}
-          <div className="w-full lg:max-w-sm">
-            <label
-              htmlFor="product-search"
-              className="mb-2 block text-xs font-semibold text-zinc-500"
-            >
+          {/* Product Count */}
+          <div className="flex items-center gap-3">
+            <div className="rounded-2xl border border-zinc-200 bg-white px-4 py-3 shadow-sm">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">
+                Available
+              </p>
+
+              <p className="mt-0.5 text-lg font-bold text-zinc-900">
+                {filteredProducts.length}
+                <span className="ml-1 text-xs font-medium text-zinc-400">
+                  {filteredProducts.length === 1 ? "product" : "products"}
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Search / Toolbar */}
+      <div className="mb-8 rounded-[1.5rem] border border-zinc-200/80 bg-white p-3 shadow-sm sm:p-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex-1 sm:max-w-md">
+            <label htmlFor="product-search" className="sr-only">
               Search products
             </label>
 
-            <div className="flex h-11 items-center overflow-hidden rounded-lg border border-zinc-200 bg-zinc-50 transition focus-within:border-zinc-400 focus-within:bg-white">
+            <div className="group flex h-12 items-center overflow-hidden rounded-xl border border-zinc-200 bg-zinc-50 transition-all duration-300 focus-within:border-zinc-400 focus-within:bg-white focus-within:shadow-sm">
               <span
-                className="px-3 text-base text-zinc-400"
+                className="px-3.5 text-base text-zinc-400 transition group-focus-within:text-zinc-700"
                 aria-hidden="true"
               >
                 🔎
@@ -63,8 +78,8 @@ export default function ShopSection() {
                 type="search"
                 value={searchTerm}
                 onChange={(event) => setSearchTerm(event.target.value)}
-                placeholder="Search by product name..."
-                className="h-full w-full bg-transparent pr-3 text-sm outline-none placeholder:text-zinc-400"
+                placeholder="Search products..."
+                className="h-full w-full bg-transparent pr-2 text-sm text-zinc-900 outline-none placeholder:text-zinc-400"
               />
 
               {searchTerm.length > 0 && (
@@ -72,66 +87,80 @@ export default function ShopSection() {
                   type="button"
                   onClick={() => setSearchTerm("")}
                   aria-label="Clear search"
-                  className="mr-2 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-lg text-zinc-400 transition hover:bg-zinc-200 hover:text-zinc-700"
+                  className="mr-2 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-lg text-zinc-400 transition duration-200 hover:bg-zinc-200 hover:text-zinc-800"
                 >
                   ×
                 </button>
               )}
             </div>
           </div>
+
+          <div className="flex items-center justify-between gap-4 px-1 sm:justify-end">
+            <p className="text-xs text-zinc-400">
+              {searchTerm.trim()
+                ? `Results for "${searchTerm.trim()}"`
+                : "Showing all products"}
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Products */}
+      {/* Product Area */}
       {filteredProducts.length > 0 ? (
         <div>
-          {/* Toolbar */}
-          <div className="mb-4 flex items-center justify-between">
-            <p className="text-sm font-semibold text-zinc-800">
-              {searchTerm.trim()
-                ? `Search results for "${searchTerm.trim()}"`
-                : "All featured products"}
-            </p>
+          {/* Small Results Header */}
+          <div className="mb-5 flex items-center justify-between">
+            <div>
+              <h3 className="text-sm font-bold text-zinc-900">
+                {searchTerm.trim() ? "Search results" : "All products"}
+              </h3>
 
-            <p className="text-xs text-zinc-400">
+              <p className="mt-1 text-xs text-zinc-400">
+                Select a product to learn more.
+              </p>
+            </div>
+
+            <div className="hidden h-8 items-center rounded-full bg-zinc-100 px-3 text-xs font-semibold text-zinc-500 sm:flex">
               {filteredProducts.length}{" "}
               {filteredProducts.length === 1 ? "item" : "items"}
-            </p>
+            </div>
           </div>
 
           {/* Product Grid */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
             {filteredProducts.map((product) => (
-              <ProductCard
+              <div
                 key={product.id}
-                product={product}
-              />
+                className="min-w-0 transition duration-300 hover:-translate-y-1"
+              >
+                <ProductCard product={product} />
+              </div>
             ))}
           </div>
         </div>
       ) : (
-        /* Empty Search State */
-        <div className="rounded-2xl border border-zinc-200 bg-white px-6 py-16 text-center shadow-sm">
+        /* Empty State */
+        <div className="overflow-hidden rounded-[2rem] border border-zinc-200 bg-white px-6 py-20 text-center shadow-sm">
           <div
-            className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-zinc-100 text-2xl"
+            className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-zinc-100 text-2xl"
             aria-hidden="true"
           >
             🔎
           </div>
 
-          <h3 className="mt-5 font-bold text-zinc-900">
+          <h3 className="mt-6 text-lg font-bold text-zinc-900">
             No products found
           </h3>
 
           <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-zinc-500">
-            We couldn't find a product matching your search. Try a
-            different product name.
+            We couldn't find a product matching your search. Try another
+            product name or view the complete collection.
           </p>
 
           <button
             type="button"
             onClick={() => setSearchTerm("")}
-            className="mt-5 rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-zinc-700"
+            className="mt-6 rounded-xl bg-zinc-950 px-6 py-3 text-sm font-bold text-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-zinc-800 hover:shadow-md"
           >
             View All Products
           </button>
