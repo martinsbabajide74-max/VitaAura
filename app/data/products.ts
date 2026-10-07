@@ -269,7 +269,7 @@ export const products: Product[] = [
     id: 11,
     name: "Chelated Cal-Mag Vit D (6×90)",
     category: "Nutrition",
-    image: "/products/Chelated Cal-Mag.webp",
+    image: "/products/WhatsApp Image 2026-10-07 at 1.43.43 PM.jpeg",
     shortDescription: "Chelated Cal-Mag Vit D (6×90).",
     about:
       "Chelated Cal-Mag provides calcium, magnesium and vitamin D in an amino-acid chelated mineral formula designed for everyday nutritional support.",
