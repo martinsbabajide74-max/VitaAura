@@ -5,7 +5,8 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { useCart } from "../context/CartContext";
 
-const WHATSAPP_NUMBER = "2347064545100";
+const WHATSAPP_NUMBER = "07030636466";
+const WHATSAPP_URL_NUMBER = "2347030636466";
 
 export default function CheckoutPage() {
   const { cart, cartCount } = useCart();
@@ -93,7 +94,7 @@ Total before delivery: ₦${subtotal.toLocaleString()}
 
 Please confirm my order and delivery details. Thank you.`;
 
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    const whatsappUrl = `https://wa.me/${WHATSAPP_URL_NUMBER}?text=${encodeURIComponent(
       message
     )}`;
 

@@ -4,8 +4,27 @@ import { useState } from "react";
 import ProductCard from "./ProductCard";
 import { products } from "../data/products";
 
-export default function ShopSection() {
-  const [searchTerm, setSearchTerm] = useState("");
+type ShopSectionProps = {
+  searchTerm?: string;
+  onSearchTermChange?: (value: string) => void;
+};
+
+export default function ShopSection({
+  searchTerm: controlledSearchTerm,
+  onSearchTermChange,
+}: ShopSectionProps) {
+  const [internalSearchTerm, setInternalSearchTerm] = useState("");
+
+  const searchTerm = controlledSearchTerm ?? internalSearchTerm;
+
+  const handleSearchChange = (value: string) => {
+    if (onSearchTermChange) {
+      onSearchTermChange(value);
+      return;
+    }
+
+    setInternalSearchTerm(value);
+  };
 
   const filteredProducts = products
     .filter((product) =>
@@ -77,7 +96,7 @@ export default function ShopSection() {
                 id="product-search"
                 type="search"
                 value={searchTerm}
-                onChange={(event) => setSearchTerm(event.target.value)}
+                onChange={(event) => handleSearchChange(event.target.value)}
                 placeholder="Search products..."
                 className="h-full w-full bg-transparent pr-2 text-sm text-zinc-900 outline-none placeholder:text-zinc-400"
               />
@@ -85,7 +104,7 @@ export default function ShopSection() {
               {searchTerm.length > 0 && (
                 <button
                   type="button"
-                  onClick={() => setSearchTerm("")}
+                  onClick={() => handleSearchChange("")}
                   aria-label="Clear search"
                   className="mr-2 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-lg text-zinc-400 transition duration-200 hover:bg-zinc-200 hover:text-zinc-800"
                 >
@@ -159,7 +178,7 @@ export default function ShopSection() {
 
           <button
             type="button"
-            onClick={() => setSearchTerm("")}
+            onClick={() => handleSearchChange("")}
             className="mt-6 rounded-xl bg-zinc-950 px-6 py-3 text-sm font-bold text-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-zinc-800 hover:shadow-md"
           >
             View All Products
