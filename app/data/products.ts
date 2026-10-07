@@ -88,7 +88,7 @@ export const products: Product[] = [
     id: 4,
     name: "Formula IV Plus (Single)",
     category: "Nutrition",
-    image: "/products/Formula IV Plus.webp",
+    image: "/products/formula iv plus.webp",
     shortDescription: "Formula IV Plus (Single) — 60 sachets.",
     about:
       "Broad spectrum of nutrients for optimal health and vitality, with an iron-free multivitamin and Tre-en-en®.",
