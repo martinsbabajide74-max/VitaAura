@@ -61,7 +61,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </p>
 
         <Link href={`/products/${product.id}`} className="block">
-          <h2 className="mt-2 line-clamp-2 min-h-[3rem] text-[17px] font-semibold leading-6 tracking-tight text-zinc-900 transition-colors duration-200 hover:text-zinc-600">
+          <h2 className="mt-2 min-h-[3rem] break-words text-[17px] font-semibold leading-6 tracking-tight text-zinc-900 transition-colors duration-200 hover:text-zinc-600">
             {product.name}
           </h2>
         </Link>
